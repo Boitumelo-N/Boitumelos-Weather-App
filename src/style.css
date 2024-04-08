@@ -102,3 +102,24 @@ footer {
 main {
   padding: 30px;
 }
+
+.weather-forecast {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 5px;
+  color: #272044;
+  font-weight: bold;
+}
+
+.weather-forecast-temperatures {
+  font-size: 13px;
+}
+
+.weather-forecast-date {
+  opacity: 0.6;
+}
+
+.weather-forecast-temperature-max {
+  opacity: 0.6;
+}
