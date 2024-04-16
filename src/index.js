@@ -57,4 +57,46 @@ function handleSearchSubmit(event) {
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+
+  forecast.innerHTML = `
+      <div>
+ <table class="weather-forecast">
+            <tr>
+            <td class="weather-forecast-date">Mon</td>
+            <td class="weather-forecast-date">Tue</td>
+            <td class="weather-forecast-date">Wed</td>
+            <td class="weather-forecast-date">Thu</td>
+            <td class="weather-forecast-date">Fri</td>
+            <td class="weather-forecast-date">Sat</td>
+            <td class="weather-forecast-date">Sun</td>
+          </tr>
+            <tr>
+              <td class="weather-forecast-icon">🌤</td>
+              <td class="weather-forecast-icon">🌤</td>
+              <td class="weather-forecast-icon">🌤</td>
+              <td class="weather-forecast-icon">🌤</td>
+              <td class="weather-forecast-icon">🌤</td>
+              <td class="weather-forecast-icon">🌤</td>
+              <td class="weather-forecast-icon">🌤</td>
+            </tr>
+            <tr>
+              <td class="weather-forecast-temperatures">
+                <span class="weather-app-temperature-min">8°</span>
+                <span class="weather-app-temperature-max">20°</span>
+              </td>
+              <td class="weather-forecast-temperatures"><span class="weather-app-temperature-min">12°</span> <span class="weather-app-temperature-max">24°</span></td>
+    <td class="weather-forecast-temperatures"><span class="weather-app-temperature-min">10°</span> <span class="weather-app-temperature-max">20°</span></td>
+    <td class="weather-forecast-temperatures"><span class="weather-app-temperature-min">15°</span> <span class="weather-app-temperature-max">25°</span></td>
+    <td class="weather-forecast-temperatures"><span class="weather-app-temperature-min">10°</span> <span class="weather-app-temperature-max">21°</span></td>
+    <td class="weather-forecast-temperatures"><span class="weather-app-temperature-min">8°</span> <span class="weather-app-temperature-max">19°</span></td>
+    <td class="weather-forecast-temperatures"><span class="weather-app-temperature-min">12°</span> <span class="weather-app-temperature-max">22°</span></td>
+            </tr>
+          </table>
+          </div>
+`;
+}
+
 searchCity("Johannesburg");
+displayForecast();

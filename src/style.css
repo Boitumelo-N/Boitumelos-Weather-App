@@ -106,7 +106,7 @@ main {
 .weather-forecast {
   width: 100%;
   border-collapse: collapse;
-  text-align: center;
+  table-layout: auto;
   padding: 5px;
   color: #272044;
   font-weight: bold;
@@ -118,8 +118,9 @@ main {
 
 .weather-forecast-date {
   opacity: 0.6;
+  font-size: 16px;
 }
 
-.weather-forecast-temperature-max {
+.weather-app-temperature-max {
   opacity: 0.6;
 }
