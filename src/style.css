@@ -103,13 +103,13 @@ main {
   padding: 30px;
 }
 
-.weather-forecast {
-  width: 100%;
+.weather-forecast-day {
+  width: auto;
   border-collapse: collapse;
-  table-layout: auto;
   padding: 5px;
   color: #272044;
   font-weight: bold;
+  display: inline-table;
 }
 
 .weather-forecast-temperatures {
@@ -119,8 +119,20 @@ main {
 .weather-forecast-date {
   opacity: 0.6;
   font-size: 16px;
+  display: inline;
 }
 
 .weather-app-temperature-max {
   opacity: 0.6;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.table-div {
+  display: inline-block;
+}
+
+.weather-forecast-icon {
+  font-size: 30px;
+  display: inline-block;
 }
