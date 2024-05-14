@@ -66,42 +66,43 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 function displayForecast(response) {
-  let forecastHtml = "";
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const icons = ["🌤", "🌤", "🌤", "🌤", "🌤", "🌤", "🌤"];
+  const temperatures = [
+    { max: "21°", min: "11°" },
+    { max: "23°", min: "12°" },
+    { max: "24°", min: "9°" },
+    { max: "24°", min: "10°" },
+    { max: "24°", min: "10°" },
+    { max: "23°", min: "9°" },
+    { max: "24°", min: "9°" },
+  ];
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
-      <div class="weather-forecast-day">
-      <div class="table-div">
-      <table class="weather-forecast">
-      <tr>
-            <td><div class="weather-forecast-date">${day}</div></td>
-          </tr>
-          </table>
-          </div>
-          <div class="table-div">
-          <table class="weather-forecast">
-          <tr>   
-          <td><div class="weather-forecast-icon">🌤</div></td>
-          </tr>
-          </div>
-          </table>
-          <div class="table-div">
-          <table class="weather-forecast">
-          <tr>
-          <td><div class="weather-forecast-temperatures"><span class="weather-app-temperature-min">8°</span> <span class="weather-app-temperature-max">20°</span></div></td>
-          </tr>
-          </table>
-          </div>
-          </div>
-`;
+  let forecastHTML =
+    '<div class="weather-forecast-day"><div class="table-div"><table class="weather-forecast"><tr>';
+
+  days.forEach((day) => {
+    forecastHTML += `<th><div class="weather-forecast-date">${day}</div></th>`;
   });
+  forecastHTML += "</tr>";
 
-  let forecastElement = document.querySelector("#forecast");
-  forecastElement.innerHTML = forecastHtml;
+  forecastHTML += "<tr>";
+  icons.forEach((icon) => {
+    forecastHTML += `<td><div class="weather-forecast-icon">${icon}</div></td>`;
+  });
+  forecastHTML += "</tr>";
+
+  forecastHTML += "<tr>";
+  temperatures.forEach((temp) => {
+    forecastHTML += `<td><div class="weather-forecast-temperatures"><span class="weather-app-temperature-max">${temp.max}</span><span class="weather-app-temperature-min">${temp.min}</span></div></td>`;
+  });
+  forecastHTML += "</tr>";
+
+  forecastHTML += "</table></div></div>";
+
+  forecast.innerHTML = forecastHTML;
 }
 
 searchCity("Johannesburg");
 getForecast("Johannesburg");
+displayForecast();

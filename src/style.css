@@ -104,7 +104,7 @@ main {
 }
 
 .weather-forecast-day {
-  width: auto;
+  width: 100%;
   border-collapse: collapse;
   padding: 5px;
   color: #272044;
@@ -113,26 +113,34 @@ main {
 }
 
 .weather-forecast-temperatures {
-  font-size: 13px;
+  font-size: 15px;
+  text-align: center;
 }
 
-.weather-forecast-date {
+.weather-app-temperature-min {
   opacity: 0.6;
-  font-size: 16px;
-  display: inline;
-}
-
-.weather-app-temperature-max {
-  opacity: 0.6;
-  font-size: 14px;
-  display: inline-block;
+  font-size: 15px;
 }
 
 .table-div {
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+}
+
+.weather-forecast {
+  width: 100%;
+}
+
+.weather-forecast th,
+.weather-forecast td {
+  flex: 1;
 }
 
 .weather-forecast-icon {
   font-size: 30px;
-  display: inline-block;
+  display: flex;
+  width: 100%;
+  border-collapse: collapse;
+  flex-direction: column;
+  align-items: center;
 }
