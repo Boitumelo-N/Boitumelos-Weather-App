@@ -137,10 +137,10 @@ main {
 }
 
 .weather-forecast-icon {
-  font-size: 30px;
   display: flex;
-  width: 100%;
+  width: 80px;
   border-collapse: collapse;
   flex-direction: column;
-  align-items: center;
+  text-align: center;
+  font-size: 25px;
 }

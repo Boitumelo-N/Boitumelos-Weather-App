@@ -56,6 +56,13 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
 function getForecast(city) {
   let apiKey = "2b5oe2d82944a30ca14a100tfe32ce6e";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&unit=metric`;
@@ -66,35 +73,30 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 function displayForecast(response) {
-  const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  const icons = ["🌤", "🌤", "🌤", "🌤", "🌤", "🌤", "🌤"];
-  const temperatures = [
-    { max: "21°", min: "11°" },
-    { max: "23°", min: "12°" },
-    { max: "24°", min: "9°" },
-    { max: "24°", min: "10°" },
-    { max: "24°", min: "10°" },
-    { max: "23°", min: "9°" },
-    { max: "24°", min: "9°" },
-  ];
-
+  const forecastData = response.data.daily;
   let forecastHTML =
     '<div class="weather-forecast-day"><div class="table-div"><table class="weather-forecast"><tr>';
 
-  days.forEach((day) => {
-    forecastHTML += `<th><div class="weather-forecast-date">${day}</div></th>`;
+  forecastData.forEach((day) => {
+    forecastHTML += `<th><div class="weather-forecast-date">${formatDay(
+      day.time
+    )}</div></th>`;
   });
   forecastHTML += "</tr>";
 
   forecastHTML += "<tr>";
-  icons.forEach((icon) => {
-    forecastHTML += `<td><div class="weather-forecast-icon">${icon}</div></td>`;
+  forecastData.forEach((day) => {
+    forecastHTML += `<td><div class="weather-forecast-icon"><img src="${day.condition.icon_url}" /></div></td>`;
   });
   forecastHTML += "</tr>";
 
   forecastHTML += "<tr>";
-  temperatures.forEach((temp) => {
-    forecastHTML += `<td><div class="weather-forecast-temperatures"><span class="weather-app-temperature-max">${temp.max}</span><span class="weather-app-temperature-min">${temp.min}</span></div></td>`;
+  forecastData.forEach((day) => {
+    forecastHTML += `<td><div class="weather-forecast-temperatures"><span class="weather-app-temperature-max"> ${Math.round(
+      day.temperature.maximum
+    )}° </span><span class="weather-app-temperature-min">${Math.round(
+      day.temperature.minimum
+    )}°</span></div></td>`;
   });
   forecastHTML += "</tr>";
 
